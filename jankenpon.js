@@ -1,9 +1,6 @@
 console.log("Hey! Welcome to this console-based Rock, Paper Scissors game.\n\n" +
-"Let's Begin! To play, enter 'fullMatch()'")
+"Let's Begin! To play, enter 'playGame()'")
 
-
-let player = 0;
-let comp = 0;
 
 //GENERATE RANDOM NUMBER FOR COMPUTER
 function getComputerChoice () {
@@ -82,6 +79,11 @@ function playRound(playerChoice, computerChoice) {
 
 function playGame() {
 
+  let player = 0;
+  let comp = 0;
+  let rounds = 0;
+
+  while(rounds < 5) {
 ////ASK PLAYER'S & COMPUTER'S CHOICE
     let playerChoice = prompt('Rock, Paper or Scissors?');
     const result = playRound(playerChoice, getComputerChoice());
@@ -99,18 +101,15 @@ function playGame() {
       console.log(result)
     }
 ////
+    ++rounds
     console.log('PLAYER:', player, ' COMP:', comp)
-    console.log('ROUNDS: ' + (player + comp));
-}
-
-function fullMatch (){
-
-//PLAY FOR 5 SCORED ROUNDS
-  while( player + comp < 5){
-    playGame()
+    console.log('ROUNDS: ', rounds);
   }
 
-  if (player > comp) {
+  if (player === comp) {
+    return "Oh it's a tie! One more?"
+  }
+  else if (player > comp) {
     return "Congratulations, you won! Let's play another one?";
   }
   else {
@@ -119,5 +118,6 @@ function fullMatch (){
 
   player = 0;
   comp = 0;
+  rounds = 0;
 
 }

@@ -14,43 +14,36 @@ function playRound(playerChoice, computerChoice) {
 
     console.log("\n      " +
     (playerChoice + " X " + computerChoice).toUpperCase() + "\n\n");
-
+    if ( !(playerChoice === 'rock'
+    ||     playerChoice === 'paper'
+    ||     playerChoice === 'scissors'))   {
+    return "Ummm... That doesn't make sense.\n"
+          +  "          Try again!";
+    }
 
 //-----IF TIE
     if (playerChoice === computerChoice) {
       return `It's a tie! Both chose ${playerChoice}`;
     }
-//-----IF NOT TIE, EVALUATE FOR ALL POSSIBLE CASES
+/*-----IF NOT TIE, EVALUATE FOR ALL OTHER SCENARIOS
+TO RETURN RESULT*/
 
-      switch (playerChoice) {
+      switch (computerChoice + playerChoice) {
 
-        case 'rock':
-          if (computerChoice === 'scissors') {
-            return "You Win! Rock beats Scissors"
-          } else {
-          return "You Lose! Paper beats Rock"
-          }
-          break
+        case 'rockscissors':
+          return "You Lose! Rock beats scissors"
+        break
 
-        case 'paper':
-          if (computerChoice === 'rock') {
-            return "You Win! Paper beats Rock"
-          } else {
-            return "You Lose! Scissors beats Paper"
-          }
-          break
+        case 'paperrock':
+          return "You Lose! Paper beats rock"
+        break
 
-        case 'scissors':
-          if (computerChoice === 'paper') {
-            return "You Win! Scissors beats Paper"
-          } else {
-            return "You Lose! Rock beats Scissors"
-          }
-          break
+        case 'scissorspaper':
+          return "You Lose! Scissors beats Paper"
+        break
 
         default:
-        return "Ummm... That doesn't make sense.\n"
-              +  "          Try again!";
+          return `You Win, ${playerChoice} beats ${computerChoice}!`
       }
 
 
@@ -68,11 +61,11 @@ function playGame() {
     const result = playRound(playerChoice, getComputerChoice());
 
 ////TEST FOR WIN, LOSE OR WRONG
-    if ( result.includes('You Win!') ) {
+    if ( result.includes('You Win') ) {
       ++player;
       console.log(result)
     }
-    else if ( result.includes('You Lose!') ) {
+    else if ( result.includes('You Lose') ) {
       ++comp;
       console.log(result)
     }
@@ -88,7 +81,7 @@ function playGame() {
   }
 
   if (player === comp) {
-    return "Oh it's a tie! One more?"
+    return "Draw! One more to break the tie?"
   }
   else if (player > comp) {
     return "Congratulations, you won! Let's play another one?";

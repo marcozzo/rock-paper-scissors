@@ -1,48 +1,32 @@
-console.log("Hey! Welcome to this console-based Rock, Paper Scissors game.\n\n" +
-"Let's Begin! To play, enter 'playGame()'")
+console.log("Hey! Welcome to this console-based Rock, Paper Scissors game.\n\n"
+          + "Let's Begin! To play, enter 'playGame()'")
 
 
 //GENERATE RANDOM NUMBER FOR COMPUTER
 function getComputerChoice () {
-  let randomN = Math.random() * 100;
-
-//RETURN MOVE DEPENDING ON NUMBER RANGE
-  if (randomN <= 33) {
-    return "rock"
-  } else if (randomN <= 66) {
-    return "paper"
-  } else {
-    return "scissors"
-  }
+  let randomN = ['rock','paper','scissors'];
+  return (randomN[ Math.floor(Math.random() * randomN.length) ]);
 }
 
 function playRound(playerChoice, computerChoice) {
 
-//IF NOT A A VALID MOVE...
-  if (typeof(playerChoice) !== 'string' &&
-  !(  playerChoice  === 'rock'
-  ||  playerChoice  === 'paper'
-  ||  playerChoice  === 'scissors') ) {
-    return "Ummm... That doesn't make sense.\n"
-        +  "          Try again!";
-  }
-//IF A VALID MOVE
-  else {
-        playerChoice = playerChoice.toLowerCase()
-        console.log("\n      " + (playerChoice + " X " + computerChoice).toUpperCase() + "\n\n")
+    playerChoice = String(playerChoice).toLowerCase()
+
+    console.log("\n      " +
+    (playerChoice + " X " + computerChoice).toUpperCase() + "\n\n");
+
 
 //-----IF TIE
     if (playerChoice === computerChoice) {
       return `It's a tie! Both chose ${playerChoice}`;
     }
 //-----IF NOT TIE, EVALUATE FOR ALL POSSIBLE CASES
-    else {
 
       switch (playerChoice) {
 
         case 'rock':
           if (computerChoice === 'scissors') {
-            return "You Won! Rock beats Scissors"
+            return "You Win! Rock beats Scissors"
           } else {
           return "You Lose! Paper beats Rock"
           }
@@ -50,7 +34,7 @@ function playRound(playerChoice, computerChoice) {
 
         case 'paper':
           if (computerChoice === 'rock') {
-            return "You Won! Paper beats Rock"
+            return "You Win! Paper beats Rock"
           } else {
             return "You Lose! Scissors beats Paper"
           }
@@ -58,7 +42,7 @@ function playRound(playerChoice, computerChoice) {
 
         case 'scissors':
           if (computerChoice === 'paper') {
-            return "You Won! Scissors beats Paper"
+            return "You Win! Scissors beats Paper"
           } else {
             return "You Lose! Rock beats Scissors"
           }
@@ -68,11 +52,6 @@ function playRound(playerChoice, computerChoice) {
         return "Ummm... That doesn't make sense.\n"
               +  "          Try again!";
       }
-
-
-    }
-
-  }
 
 
 }
@@ -89,7 +68,7 @@ function playGame() {
     const result = playRound(playerChoice, getComputerChoice());
 
 ////TEST FOR WIN, LOSE OR WRONG
-    if ( result.includes('You Won!') ) {
+    if ( result.includes('You Win!') ) {
       ++player;
       console.log(result)
     }
@@ -101,7 +80,9 @@ function playGame() {
       console.log(result)
     }
 ////
-    ++rounds
+    if( !(result.includes("Ummm...")) ) {
+      ++rounds
+    }
     console.log('PLAYER:', player, ' COMP:', comp)
     console.log('ROUNDS: ', rounds);
   }

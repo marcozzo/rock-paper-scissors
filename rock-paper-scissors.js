@@ -5,10 +5,16 @@ let roundCount = 1;
 
 const playRound = function () {
 
-    //INCREMENT ROUNDS ONLY IF HUMAN INPUT IS VALID
+    //REPEAT UNTIL FIVE VALID ROUNDS
     while (roundCount <= 5) {
 
-        let humanChoice = prompt("Rock | Paper | Scissors");
+        function gethumanChoice() {
+            return prompt("Rock | Paper | Scissors");
+        }
+
+        //FILTER THE INPUT
+        let humanChoice = gethumanChoice().trim().toLowerCase();
+        
 
         if (typeof humanChoice === "string" &&
             (humanChoice === 'rock' ||
@@ -19,8 +25,10 @@ const playRound = function () {
         }
     }
 
+    ////RESET ROUNDS
     roundCount = 1;
 
+    ////FINAL MESSAGE////
     if (humanScore === computerScore) {
         humanScore = 0;
         computerScore = 0;
@@ -39,6 +47,7 @@ const playRound = function () {
 
 
 }
+
 
 //REMOVED "getNumber function"
 let getComputerChoice = function () {
@@ -60,6 +69,8 @@ let getComputerChoice = function () {
     //Also about arrow and anonymous functions
 }
 
+
+//COMPARE CHOICES AND DISPLAY RESULT AND SCORE
 function checkResult(human, computer) {
 
     const HUMAN = "color: cyan"

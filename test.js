@@ -1,9 +1,29 @@
+//UNRELATED TO ROCK-PAPER-SCISSORS
 
+testPrime();
 
-function capitalize() {
-    let sentence = prompt("Enter a sentence whose first letter is lowercase.");
-    let letter1 = sentence.charAt(0);
+//TEST FOR PRIME FROM 2 TO nTH NUMBER
+function testPrime () {
 
-    window.alert( sentence.replace( letter1, letter1.toUpperCase() ) );
+    //number -> INTERVAL LIMIT STARTING FROM 2
+    let number = prompt('Enter the number largest for' +
+        'up to which you want to test.')
+    
+    if (number === "" || number === null) {
+        return
+    }
+
+    //i -> VALUE BEING TESTED CURRENTLY 
+nextPrime:
+    for (let i = 2; i <= number; ++i) {
+        
+        for(let allLess = 2; allLess < i; allLess++) {
+            if(i % allLess === 0) continue nextPrime;
+            }
+        
+        console.log(i);
+
+        }
+    return
 
 }

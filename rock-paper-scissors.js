@@ -1,12 +1,9 @@
 let humanScore = 0;
 let computerScore = 0;
-let roundCount = 1;
+//let roundCount = 1;
 
 
 const playRound = function () {
-
-    //REPEAT UNTIL FIVE VALID ROUNDS
-    while (roundCount <= 5) {
 
         function gethumanChoice() {
             return prompt("Rock | Paper | Scissors");
@@ -46,9 +43,6 @@ const playRound = function () {
     }
 
 
-}
-
-
 //REMOVED "getNumber function"
 let getComputerChoice = function () {
 
@@ -77,8 +71,6 @@ function checkResult(human, computer) {
     const COMPUTER = "color: red"
 
     let result;
-
-    console.log(human + computer)
 
     if (human === computer) {
         console.log("Tie.");

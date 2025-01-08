@@ -2,45 +2,56 @@ let humanScore = 0;
 let computerScore = 0;
 //let roundCount = 1;
 
+const buttons = document.querySelector('#player-selection');
+const rock = document.querySelector('#rock')
+const paper = document.querySelector('#paper')
+const scissors = document.querySelector('#scissors')
 
-const playRound = function () {
+const result = document.querySelector('#results');
 
-        function gethumanChoice() {
-            return prompt("Rock | Paper | Scissors");
-        }
+let playerChoice = '';
 
-        //FILTER THE INPUT
-        let humanChoice = gethumanChoice().trim().toLowerCase();
-        
+function checkButton(event) {
+    let e = event.target;
+    playerChoice = e.id;
+}
 
-        if (typeof humanChoice === "string" &&
-            (humanChoice === 'rock' ||
-                humanChoice === 'paper' ||
-                humanChoice === 'scissors')) {
+buttons.addEventListener('click', playRound)
 
-            checkResult(humanChoice, getComputerChoice())
-        }
-    }
+function playRound(event) {
 
-    ////RESET ROUNDS
-    roundCount = 1;
+    checkButton(event); //CHECK WHICH BUTTON
+    let computerChoice = getComputerChoice();
 
-    ////FINAL MESSAGE////
-    if (humanScore === computerScore) {
-        humanScore = 0;
-        computerScore = 0;
-        return "The game is a tie!"
-    }
-    else if (humanScore > computerScore) {
-        humanScore = 0;
-        computerScore = 0;
-        return "Congratulations! You won the game."
-    }
-    else {
-        humanScore = 0;
-        computerScore = 0;
-        return "You lost the game."
-    }
+    //CASES
+
+    console.log('player' + playerChoice);
+    console.log('computer' + computerChoice);
+
+    checkResult(playerChoice, computerChoice)
+
+}
+
+
+////RESET ROUNDS
+//  roundCount = 1;
+
+/*////FINAL MESSAGE////
+if (humanScore === computerScore) {
+    humanScore = 0;
+    computerScore = 0;
+    return "The game is a tie!"
+}
+else if (humanScore > computerScore) {
+    humanScore = 0;
+    computerScore = 0;
+    return "Congratulations! You won the game."
+}
+else {
+    humanScore = 0;
+    computerScore = 0;
+    return "You lost the game."
+}*/
 
 
 //REMOVED "getNumber function"
@@ -70,10 +81,8 @@ function checkResult(human, computer) {
     const HUMAN = "color: cyan"
     const COMPUTER = "color: red"
 
-    let result;
-
     if (human === computer) {
-        console.log("Tie.");
+        result.textContent = "Tie!";
     }
 
 

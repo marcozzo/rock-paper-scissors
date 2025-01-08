@@ -1,0 +1,25 @@
+.container{
+    margin-inline: auto;
+    background-color: lightgray;
+    width: 50%;
+    height: 250px;
+    border: dashed gray 5px;
+}
+h1 {
+    color: #FF1020;
+    padding-top: 35px;
+}
+
+body {
+    text-align: center;
+}
+
+#results {
+    margin: 50px;
+    text-align: center;
+    font-size: 25px;
+    font-weight: 900;
+}
+#player-selection {
+    padding-top: 70px;
+}

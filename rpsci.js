@@ -1,10 +1,8 @@
 let playerScore = 0;
 let computerScore = 0;
 
-const buttons = document.querySelector('#player-selection');
-const rock = document.querySelector('#rock')
-const paper = document.querySelector('#paper')
-const scissors = document.querySelector('#scissors')
+const options = document.querySelector('#player-selection');
+const buttons = document.querySelectorAll('.choice');
 
 const result = document.querySelector('#round');
 
@@ -15,9 +13,14 @@ function checkButton(event) {
     playerChoice = e.id;
 }
 
-buttons.addEventListener('click', playRound)
+options.addEventListener('click', playRound)
 
 function playRound(event) {
+
+    //IF PLAYER CLICKS ON BUTTONS CONTAINER, NO RESPONSE
+    if(event.target.id === "player-selection"){
+        return
+    }
 
     checkButton(event); //CHECK WHICH BUTTON
     let computerChoice = getComputerChoice();
@@ -29,12 +32,24 @@ function playRound(event) {
 
     checkResult(playerChoice, computerChoice)
 
+    if (playerScore === 5 || computerScore === 5) {
+
+        result.style.fontSize = "25px";
+
+        if (playerScore === 5) {
+            result.textContent = "Congrats!\nYou WIN!!!";
+        }
+        if (computerScore === 5) {
+            result.textContent = "Computer Wins!"
+        }
+
+        playerScore = 0;
+        computerScore = 0;
+
+    }
+
 }
 
-/*
-if(playerScore === 5 || computerScore === 5) {
-
-}*/
 
 
 ////RESET ROUNDS
@@ -92,36 +107,36 @@ function checkResult(human, computer) {
     else if (human + computer === "rockscissors") {
         result.textContent = "ROCK beats SCISSORS! \nYou get a point!";
         result.style.fontSize = '15px';
-        playerScore ++
+        playerScore++
     }
     else if (human + computer === "rockpaper") {
         result.textContent = "PAPER beats ROCK! \nComputer gets a point."
         result.style.fontSize = '15px';
-        playerScore ++
+        computerScore++
     }
 
     //PLAYER IS PAPER
     else if (human + computer === "paperrock") {
         result.textContent = "PAPER beats ROCK! \nYou get a point!"
         result.style.fontSize = '15px';
-        playerScore ++
+        playerScore++
     }
     else if (human + computer === "paperscissors") {
         result.textContent = "SCISSORS beats PAPER! \nComputer gets a point."
         result.style.fontSize = '15px';
-        playerScore ++
+        computerScore++
     }
 
     //PLAYER IS SCISSORS
     else if (human + computer === "scissorspaper") {
         result.textContent = "SCISSORS beats PAPER! \nYou get a point!"
         result.style.fontSize = '15px';
-        playerScore ++
+        playerScore++
     }
     else if (human + computer === "scissorsrock") {
         result.textContent = "ROCK beats SCISSORS! \nComputer gets a point."
         result.style.fontSize = '15px';
-        playerScore ++
+        computerScore++
     }
     //++roundCount (no more roundCount variable)
 

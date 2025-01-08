@@ -6,7 +6,7 @@
     border: dashed gray 5px;
 }
 h1 {
-    color: #FF1020;
+    color: #D01020;
     padding-top: 35px;
 }
 
@@ -15,11 +15,22 @@ body {
 }
 
 #results {
+    padding: 20px 0 20px 10px;
     margin: 50px;
     text-align: center;
-    font-size: 25px;
     font-weight: 900;
+    border: solid 3px aquamarine;
 }
 #player-selection {
     padding-top: 70px;
+}
+.opponent {
+    text-align: left;
+}
+#round {
+    background-color: lightcoral;
+    border: dotted red 5px;
+    width: 150px;
+    height: 55px;
+    margin-inline: auto;
 }

@@ -2,8 +2,10 @@ let playerScore = 0;
 let computerScore = 0;
 
 const options = document.querySelector('#player-selection');
-const buttons = document.querySelectorAll('.choice');
-const container = document.querySelector('.container')
+const rock = document.querySelector('#rock');
+const paper = document.querySelector('#paper');
+const scissors = document.querySelector('#scissors');
+const container = document.querySelector('.container');
 
 const player = document.querySelector('#player');
 const cpu = document.querySelector('#cpu');
@@ -55,18 +57,21 @@ function playRound(event) {
         result.style.fontSize = "25px";
 
         if (playerScore === 5) {
-            result.textContent = "Congrats!\nYou WIN!!!";
+            result.textContent = "Congrats!\nYou Won!!!";
         }
         if (computerScore === 5) {
-            result.textContent = "Computer Wins!";
+            result.textContent = "Computer Won!";
         }
 
         const again = document.createElement('button');
+        again.style.marginTop = '5px'
         again.textContent = "START OVER"
         container.appendChild(again);
+        options.textContent = "";
 
         //RESTART + RESET SCORES AND RESULT PANEL
         again.addEventListener('click', () => {
+            options.append(rock, paper, scissors);
             again.parentElement.removeChild(again);
 
             playerScore = 0;
@@ -75,9 +80,7 @@ function playRound(event) {
             player.textContent = 'PLAYER: ' + playerScore;
             cpu.textContent = 'CPU: ' + computerScore;
             result.textContent = '';
-
         })
-
     }
 
 }

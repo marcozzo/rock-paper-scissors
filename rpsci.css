@@ -13,16 +13,15 @@ h1 {
 body {
     text-align: center;
 }
-
+#player-selection {
+    padding-top: 70px;
+    margin-bottom: 100px;
+}
 #scoreboard {
     padding: 20px 0 20px 0;
-    margin: 100px;
     text-align: center;
     font-weight: 900;
     border: dashed 3px coral;
-}
-#player-selection {
-    padding-top: 70px;
 }
 #result {
     background-color: lightcoral;

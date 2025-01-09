@@ -14,23 +14,21 @@ body {
     text-align: center;
 }
 
-#results {
-    padding: 20px 0 20px 10px;
-    margin: 50px;
+#scoreboard {
+    padding: 20px 0 20px 0;
+    margin: 100px;
     text-align: center;
     font-weight: 900;
-    border: solid 3px aquamarine;
+    border: dashed 3px coral;
 }
 #player-selection {
     padding-top: 70px;
 }
-.opponent {
-    text-align: left;
-}
-#round {
+#result {
     background-color: lightcoral;
     border: dotted red 5px;
     width: 150px;
     height: 55px;
     margin-inline: auto;
+    align-content: center;
 }
